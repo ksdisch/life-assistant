@@ -1,0 +1,59 @@
+{% include "header.html" %}
+
+<!-- Define the HTML document structure -->
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Set the page title -->
+  <title>Productivity Hub</title>
+</head>
+<body>
+  <!-- Display a header for the home page -->
+  <h1>My Lists (ToDo's, Goals, Ideas, etc.)</h1>
+
+  <!-- Display tasks list as table -->
+    {% block content %}
+
+        <div class="container">
+            <div class="row">
+                <!-- Column for tasks table -->
+                <div class="col-md-6">
+                    <table class="table">
+                        <thead>
+                            <!-- loop through the keys of the first dictionary of whatever list to populate the headers-->
+                            <tr>
+                                {% for key in tasks[0] %}
+                                <th>{{ key }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        {% for task_dict in tasks %}
+                        <tr>
+                            {% for task_detail in task_dict %}
+                            <td>{{ task_dict[task_detail] }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                            
+                    </table>
+                </div>
+                <!-- Column for completed_tasks table -->
+                <div class="col-md-6">
+
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}
+
+
+
+  <!-- Display completed_tasks list -->
+
+
+  <!-- Create input form to add tasks, should link to add_task route -->
+<!--  -->
+</body>
+</html>
+
+{% include "footer.html" %}
